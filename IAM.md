@@ -32,19 +32,10 @@
        ]
      }
 ```
-- The 'Eeffect' in the above json can be set to Deny
+- The 'Effect' in the above json can be set to Deny
 - **An explicit Deny always overrides any Allow that may be granted to the user in any other policy**
 - **All permissions are implicitly denied unless explicitly granted**
 - Console sign-in link: https://smalali.signin.aws.amazon.com/console 
-- root user - sundeepmalali@gmail.com/***
-- admin user - admin/****
-             - arn:aws:iam::872833689618:user/admin
-             - access key id - AKIAIDLKFLNKOLXWUJ7Q      secret access key - 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
-             - has both programmatic and console access
-- groups - admin - policy attached - AdministratorAccess - arn:aws:iam::872833689618:group/admin
-
-- command line user details
-  - username : cliuser,      access key id:  AKIAJPROTIVX54U7NPBA,  secret access key - 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
 
 **Quiz tips**
 - Power user access allows - Access to all AWS services except the management of groups and users within IAM.
