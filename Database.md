@@ -91,7 +91,7 @@ service httpd start
 - strongly consistent reads
   - if you need latest data less than 1 sec after write then go for this approach
 
-Redshift
+**Redshift**
 - amazon's data warehousing service on the cloud
 - used for business intelligence
 - petabyte scale
