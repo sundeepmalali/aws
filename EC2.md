@@ -188,6 +188,12 @@
     - diversified - instances are distributed across all pools
     - InstancePoolsToUseCount - instances are distributed across all spot pools - used only with lowestPrice
 
+**EC2 Hibernate**
+- instance RAM is stored in root EBS volume
+- so reboot is faster
+- instance RAM < 150GB
+- cannot be hibernated for > 60days
+
 **EC2 Block Device Mapping**
 - information about how many volumes, types (EBS/Instance) should be created when a new instance is created from an AMI
 - includes both EBS and Instance stores and how many such instances
@@ -427,6 +433,12 @@ aws cp index.html s3://smalali-bootstrap-bucket
 - can enable detailed monitoring which will run every minute
 - can create alarms which create notifications - like the billing alarm
 
+**CloudTrail**
+- monitors user and resource activity
+- monitors console access and API calls
+- also captures things like who create a bucket, which IP request came from, when the call was made etc
+- used for auditing
+
 **EC2 Monitoring and Status Checks**
 - Status Check
      - EC2 service runs status check on all ec2 instance every minute - to identify hardware or software issues
@@ -444,11 +456,10 @@ aws cp index.html s3://smalali-bootstrap-bucket
      - detailed monitoring can be enabled at launch - sends every minute - is chargeable
      - you can configure CloudWatch alarm actions - for e.g you can configure an instance to be stopped if the CPU utilization becomes <20% - this can save cost as well
 
-**CloudTrail**
-- monitors user and resource activity
-- monitors console access and API calls
-- also captures things like who create a bucket, which IP request came from, when the call was made etc
-- used for auditing
+**AWS WAF**
+- Web application firewall
+- basically to protect your instance
+- can specify rules to block/allow traffic
 
 **AWS Command Line Interface (CLI)**
 - login to any instance as usual using the public ip and key file
