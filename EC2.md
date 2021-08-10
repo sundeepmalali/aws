@@ -1,6 +1,7 @@
 **Elastic Compute Cloud (EC2)**
 - webservice that provides resizable compute capacity
 - can be created on shared or dedicated hosts
+- **ec2 instance is provisioned in AZ (by specifying which subnet)**
 - you will have root access on each instance you created
 - SLA - 99.95% per region in a month
 - to access - need a key and key pair name - you get private key and aws stores the public key
@@ -17,6 +18,7 @@
   - memory optimized - more ram - used for DB, caching - e.g - R3, R4
   - GPU compute instance - graphics optimized - used for high performance and parallel computing - e.g G2
   - storage optimized - very high i/o, low latency - used for data warehousing, big data - e.g - I2, D2
+- AWS originally used a modified version of the Xen Hypervisor to host EC2. In 2017, AWS began rolling out their own Hypervisor called Nitro.
 
 **EC2 Purchasing Options**
 - on-demand
@@ -34,7 +36,7 @@
   - the scope of the instance can be either AZ or Region
   - can migrate an instance from one AZ to another AZ in a region
   - different types 
-    - standard reserved instance
+    - standard reserved instance - cannot be moved between regions
     - convertible reserved instance
     - schedule reserved instance
 - spot instances
@@ -95,6 +97,8 @@
 - in order to ping the public ip of the instance, you need to enable ICMP (All - ICMP - IPv4) in the security group
 - when you stop/terminate an instance, it loses its public IP and DNS values (it is returned to the public ip pool) , but retains the private ip/dns. but if you reboot the instance then you do not lose the public ip/dns
 - but if you use elastic ip and reboot the instance, it retains the ip address. when you terminate the instance, you have option to release the elastic ip - else you will incur charge for using the elastic ip - when you restart the instance, then a new ip will be assigned
+- If an EBS volume is attached as an additional disk (not the root volume), you can detach it without stopping the instance
+- You can't delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first deregister the AMI before you can delete the snapshot
 
 **Instance Store**
 - virtual hard drive on the host allocated to an EC2 instance
@@ -211,6 +215,8 @@
 - IAM roles can be defined during launch or after also
 - roles are universal - you can use them in any region
 - roles are better way to manage access than access/secret keys
+- To attach an IAM role to an instance that has no role, the instance can be in the stopped or running state. To replace the IAM role on an instance that already has an attached IAM role, the instance must be in the running state.
+- Changes to IAM Policies take effect almost immediately 
 
 **EC2 bootstrap scripts**
 - to automate aws deployments
@@ -460,6 +466,11 @@ aws cp index.html s3://smalali-bootstrap-bucket
 - Web application firewall
 - basically to protect your instance
 - can specify rules to block/allow traffic
+
+- Amazon FSx for Windows File Server provides a fully managed native Microsoft Windows file system so you can easily move your Windows-based applications that require shared file storage to AWS. 
+- EBS Multi Attach allows you to attach a volume to up to 16 instances, but would have issues across multiple availability zones, and could not use NTFS natively. 
+- EFS uses the NFS protocol, and is explicitly not supported on Windows. 
+- S3 is object-based storage, and would not be suitable as the backend for a file server
 
 **AWS Command Line Interface (CLI)**
 - login to any instance as usual using the public ip and key file
