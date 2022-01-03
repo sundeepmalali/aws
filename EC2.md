@@ -185,8 +185,6 @@
     - when using security and networking appliance in the VPC
     - when creating different subnets for different envs like dev, prod
     - low cost, highly available solution
-
-
 - it is the virtual NIC card of the ec2 instance
 - **eth0 is the primary interface - cannot be moved or detached (this is to which the ip, mac addresses are assigned)**
 - you can add more ENI during or after launch - only one during launch
